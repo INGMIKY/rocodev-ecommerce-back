@@ -7,6 +7,8 @@ dotenv.config()
 
 const app = express()
 
+app.use(express.json()) // recibir respuestas en formato json en los endpoints
+
 const PORT = 3001
 
 // Rutas API
