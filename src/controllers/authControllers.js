@@ -58,3 +58,33 @@ export const registerUser = async (req, res) => {
         res.json(error)
     }
 }
+
+export const profile = async (req, res) => {
+    // Extraer el accessToken enviado por el cliente
+    const token = req.cookies.accessToken
+
+    try {
+        // Verificar o decodificar el token
+        const decoded = jwt.verify(token, process.env.JWT_SECRET)
+
+        // Buscar el usuario en la base de datos
+        const user = await UserModel.findById(decoded.userId)
+        if (!user) {
+            return res.status(404).json({ message: 'Usuario no encontrado' })
+        }
+
+        console.log(
+            'USUARIO ENCONTRADO CON ÉXITO Y ENVIANDO AL FRONT DE DATOS DEL USUARIO'
+        )
+        res.status(200).json({
+            id: user._id,
+            email: user.email,
+            isAdmin: user.isAdmin,
+            username: user.username,
+        })
+    } catch (error) {}
+
+    return {
+        user: 'test user',
+    }
+}
