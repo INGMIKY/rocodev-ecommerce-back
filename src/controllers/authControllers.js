@@ -82,7 +82,9 @@ export const profile = async (req, res) => {
             isAdmin: user.isAdmin,
             username: user.username,
         })
-    } catch (error) {}
+    } catch (error) {
+        res.status(401).json({ message: 'No autorizado' })
+    }
 
     return {
         user: 'test user',
