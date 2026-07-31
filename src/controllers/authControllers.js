@@ -146,3 +146,13 @@ export const profile = async (req, res) => {
         user: 'test user',
     }
 }
+
+export const logout = async (req, res) => {
+    res.clearCookie('accesToken', {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    })
+        .status(200)
+        .json({ message: 'Cierre de sesión éxitoso' })
+}
