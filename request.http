@@ -19,3 +19,33 @@ Content-Type: application/json
 
 ### LOGOUT USER 
 POST http://localhost:3001/api/auth/logout
+
+### PETICIONES DE PRODUCTOS
+GET http://localhost:3001/api/products
+
+### POST CREAR PRODUCTO
+POST http://localhost:3001/api/products
+Content-Type: application/json
+
+{
+    "name" : "Taza de One Piece edición ilimitada",
+    "description": "Taza de One Piece edición especial. Donde aparecen todos los personajes de principales de One Piece",
+    "price" : 5000,
+    "stock": 10,
+    "imageUrl": "https://res.cloudinary.com/jjovvek8/image/upload/v1785464670/w8nhvxqlddrqchwbdong.png"
+}
+
+### PUT Actualizar producto
+PUT http://localhost:3001/api/products/6a7287c4a3af61ce87999285
+Content-Type: application/json
+
+{
+    "stock": 5
+}
+
+
+### GET Obtener producto por id
+GET http://localhost:3001/api/products/6a72c02a3c457e2c47b6bc05
+
+### DELETE Eliminar un producto por su id
+DELETE  http://localhost:3001/api/products/6a72c02a3c457e2c47b6bc05
